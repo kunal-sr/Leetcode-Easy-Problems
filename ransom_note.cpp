@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool canConstruct(string ransomNote, string magazine) {
+    int freq[26] = {0};
+    
+    for(char c : magazine) {
+        freq[c - 'a']++;
+    }
+    
+    for(char c : ransomNote) {
+        freq[c - 'a']--;
+        
+        if(freq[c - 'a'] < 0)
+            return false;
+    }
+    
+    return true;
+}
+
+int main() {
+    string ransomNote, magazine;
+    
+    cout << "Enter ransomNote: ";
+    cin >> ransomNote;
+    
+    cout << "Enter magazine: ";
+    cin >> magazine;
+    
+    if(canConstruct(ransomNote, magazine))
+        cout << "true";
+    else
+        cout << "false";
+    
+    return 0;
+}
